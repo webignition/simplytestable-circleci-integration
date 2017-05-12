@@ -24,6 +24,7 @@ dependencies:
     # Create database and database user
     - mysql -u ubuntu < config/worker.simplytestable.com/createdb.sql
     # Install
+    - rm -rf app/cache/*
     - composer install:
         pwd: worker.simplytestable.com
 

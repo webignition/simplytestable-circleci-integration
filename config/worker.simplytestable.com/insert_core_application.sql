@@ -1,2 +1,2 @@
-USE workerdb;
-INSERT INTO CoreApplication VALUES ('http://ci.app.simplytestable.com');
+USE `workerdb`;
+INSERT INTO `CoreApplication` (`url`) VALUES ('http://ci.app.simplytestable.com');

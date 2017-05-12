@@ -25,13 +25,13 @@ dependencies:
     - composer install:
         pwd: worker.simplytestable.com
 
-  database:
-    override:
-      - php app/console --env=prod doctrine:database:create:
-          pwd: worker.simplytestable.com
-      - php app/console --env=prod doctrine:migrations:migrate --no-interaction:
-          pwd: worker.simplytestable.com
-      - mysql -u ubuntu < config/worker.simplytestable.com/insert_core_application.sql
+database:
+  override:
+    - php app/console --env=prod doctrine:database:create:
+        pwd: worker.simplytestable.com
+    - php app/console --env=prod doctrine:migrations:migrate --no-interaction:
+        pwd: worker.simplytestable.com
+    - mysql -u ubuntu < config/worker.simplytestable.com/insert_core_application.sql
 
 test:
   pre:

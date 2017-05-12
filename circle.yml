@@ -33,13 +33,9 @@ dependencies:
           pwd: worker.simplytestable.com
       - mysql -u ubuntu < config/worker.simplytestable.com/insert_core_application.sql
 
-  # Activate applications
-  # Not really the most semantically-correct section, but it logically fits after dependency installation and before
-  # the tests are run
-  compile:
-    pre:
-      - php app/console simplytestable:worker:activate:
-          pwd: worker.simplytestable.com
 test:
+  pre:
+   - php app/console simplytestable:worker:activate:
+       pwd: worker.simplytestable.com
   override:
     - echo foo

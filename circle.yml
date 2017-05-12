@@ -3,6 +3,9 @@ machine:
     version: 5.5.36
 
 dependencies:
+  cache_directories:
+    - ~/.composer/cache
+
   override:
     # Check out worker repo
     - git clone git@github.com:webignition/worker.simplytestable.com.git

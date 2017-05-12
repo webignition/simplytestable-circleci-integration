@@ -32,7 +32,8 @@ database:
         pwd: worker.simplytestable.com
     - php app/console doctrine:migrations:migrate --no-interaction:
         pwd: worker.simplytestable.com
-    - mysql -u ubuntu < config/worker.simplytestable.com/insert_core_application.sql
+    - php app/console doctrine:fixtures:load --no-interaction:
+        pwd: worker.simplytestable.com
 
 test:
   pre:

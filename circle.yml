@@ -4,7 +4,8 @@ machine:
 
 dependencies:
   override:
-    - mkdir -p ~/www
-    - git clone git@github.com:webignition/worker.simplytestable.com.git:
-        pwd:
-          ~/www
+    - git clone git@github.com:webignition/worker.simplytestable.com.git
+
+test:
+  override:
+    - echo foo

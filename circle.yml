@@ -4,15 +4,17 @@ machine:
 
 dependencies:
   override:
+    # Check out worker repo
     - git clone git@github.com:webignition/worker.simplytestable.com.git
-#    make proper app/config/config.yml
-#    make proper app/config/parameters.yml
-#    make proper ???
-#    - composer install:
-#        pwd: worker.simplytestable.com
-    - ls -la
-    - mysql -u ubuntu < foo.sql
-
+    # Create app and bundle config
+    - cp config/worker.simplytestable.com/app_config.yml worker.simplytestable.com/app/config/config.yml
+    - cp worker.simplytestable.com/app/config/security_credentials.yml.dist worker.simplytestable.com/app/config/security_credentials.yml
+    - cat config/worker.simplytestable.com/bundle_parameters.yml.ci config/worker.simplytestable.com/bundle_parameters.hydrogen > worker.simplytestable.com/src/SimplyTestable/WorkerBundle/Resources/config/parameters.yml
+    # Create database and database user
+    - mysql -u ubuntu < config/worker.simplytestable.com/createdb.sql
+    # Install
+    - composer install:
+        pwd: worker.simplytestable.com
 test:
   override:
     - echo foo

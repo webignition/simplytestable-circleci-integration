@@ -1,8 +1,0 @@
-imports:
-    - { resource: "@SimplyTestableWorkerBundle/Resources/config/parameters.yml" }
-    - { resource: "@SimplyTestableWorkerBundle/Resources/config/services.yml" }
-
-framework:
-    test: ~
-    session:
-        storage_id: session.storage.mock_file

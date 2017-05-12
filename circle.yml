@@ -15,8 +15,6 @@ dependencies:
     # Check out worker repo
     - git clone git@github.com:webignition/worker.simplytestable.com.git
     # Create app config
-    - rm worker.simplytestable.com/app/config/config_prod.yml
-    - cp config/worker.simplytestable.com/app_config.yml worker.simplytestable.com/app/config/config_prod.yml
     - cp config/worker.simplytestable.com/app_parameters.yml worker.simplytestable.com/app/config/parameters.yml
     # Create bundle config
     - cp worker.simplytestable.com/app/config/security_credentials.yml.dist worker.simplytestable.com/app/config/security_credentials.yml

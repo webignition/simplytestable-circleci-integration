@@ -9,7 +9,7 @@ dependencies:
     # Create app and bundle config
     - cp config/worker.simplytestable.com/app_config.yml worker.simplytestable.com/app/config/config.yml
     - cp worker.simplytestable.com/app/config/security_credentials.yml.dist worker.simplytestable.com/app/config/security_credentials.yml
-    - cat config/worker.simplytestable.com/bundle_parameters.yml.ci config/worker.simplytestable.com/bundle_parameters.hydrogen > worker.simplytestable.com/src/SimplyTestable/WorkerBundle/Resources/config/parameters.yml
+    - cat config/worker.simplytestable.com/bundle_parameters.yml config/worker.simplytestable.com/bundle_parameters.hydrogen > worker.simplytestable.com/src/SimplyTestable/WorkerBundle/Resources/config/parameters.yml
     # Create database and database user
     - mysql -u ubuntu < config/worker.simplytestable.com/createdb.sql
     # Install

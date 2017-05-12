@@ -14,22 +14,15 @@ dependencies:
     - echo "date.timezone = Europe/London" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
 
   override:
-    - sh ./build/install_worker.sh hydrogen
+    - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql
+    - sh ./build/worker_install.sh hydrogen
 
 database:
   override:
-    - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql
-    -
-    - php app/console doctrine:database:create:
-        pwd: worker.simplytestable.com
-    - php app/console doctrine:migrations:migrate --no-interaction:
-        pwd: worker.simplytestable.com
-    - php app/console doctrine:fixtures:load --no-interaction:
-        pwd: worker.simplytestable.com
+    - sh ./build/worker_prepare_db.sh hydrogen
 
 test:
   pre:
-   - php app/console simplytestable:worker:activate:
-       pwd: worker.simplytestable.com
+    - sh ./build/worker_activate.sh hydrogen
   override:
     - echo foo

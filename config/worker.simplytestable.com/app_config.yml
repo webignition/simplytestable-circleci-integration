@@ -11,11 +11,3 @@ framework:
 web_profiler:
     toolbar: false
     intercept_redirects: false
-
-parameters:
-    database_driver: pdo_mysql
-    database_host: localhost
-    database_port: null
-    database_name: workerdb
-    database_user: workerdbuser
-    database_password: workerdbpassword

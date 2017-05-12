@@ -9,8 +9,10 @@ dependencies:
   override:
     # Check out worker repo
     - git clone git@github.com:webignition/worker.simplytestable.com.git
-    # Create app and bundle config
+    # Create app config
     - cp config/worker.simplytestable.com/app_config.yml worker.simplytestable.com/app/config/config.yml
+    - cp config/worker.simplytestable.com/app_parameters.yml worker.simplytestable.com/app/config/parameters.yml
+    # Create bundle config
     - cp worker.simplytestable.com/app/config/security_credentials.yml.dist worker.simplytestable.com/app/config/security_credentials.yml
     - cat config/worker.simplytestable.com/bundle_parameters.yml config/worker.simplytestable.com/bundle_parameters.hydrogen > worker.simplytestable.com/src/SimplyTestable/WorkerBundle/Resources/config/parameters.yml
     # Create database and database user

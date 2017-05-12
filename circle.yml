@@ -19,8 +19,6 @@ dependencies:
     # Create bundle config
     - cp worker.simplytestable.com/app/config/security_credentials.yml.dist worker.simplytestable.com/app/config/security_credentials.yml
     - cat config/worker.simplytestable.com/bundle_parameters.yml config/worker.simplytestable.com/bundle_parameters.hydrogen > worker.simplytestable.com/src/SimplyTestable/WorkerBundle/Resources/config/parameters.yml
-    # Create database and database user
-    - mysql -u ubuntu < config/worker.simplytestable.com/createdb.sql
     # Install
     - rm -rf app/cache/*
     - composer install:
@@ -28,6 +26,8 @@ dependencies:
 
 database:
   override:
+    - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql
+    -
     - php app/console doctrine:database:create:
         pwd: worker.simplytestable.com
     - php app/console doctrine:migrations:migrate --no-interaction:

@@ -1,6 +1,8 @@
 machine:
   php:
     version: 5.5.36
+  environment:
+    SYMFONY_ENV: prod
 
 dependencies:
   cache_directories:
@@ -27,9 +29,9 @@ dependencies:
 
 database:
   override:
-    - php app/console --env=prod doctrine:database:create:
+    - php app/console doctrine:database:create:
         pwd: worker.simplytestable.com
-    - php app/console --env=prod doctrine:migrations:migrate --no-interaction:
+    - php app/console doctrine:migrations:migrate --no-interaction:
         pwd: worker.simplytestable.com
     - mysql -u ubuntu < config/worker.simplytestable.com/insert_core_application.sql
 

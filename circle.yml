@@ -1,0 +1,28 @@
+machine:
+  php:
+    version: 5.5.36
+  environment:
+    SYMFONY_ENV: prod
+
+dependencies:
+  cache_directories:
+    - ~/.composer/cache
+
+  pre:
+    - printf "\n" | pecl install -f memcache
+    - echo "extension = memcache.so" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
+    - echo "date.timezone = Europe/London" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
+
+  override:
+    - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql
+    - sh ./build/worker_install.sh hydrogen
+
+database:
+  override:
+    - sh ./build/worker_prepare_db.sh hydrogen
+
+test:
+  pre:
+    - sh ./build/worker_activate.sh hydrogen
+  override:
+    - echo foo

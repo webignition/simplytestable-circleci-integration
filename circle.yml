@@ -9,6 +9,8 @@ dependencies:
     - ~/.composer/cache
 
   pre:
+    - printf "\n" | pecl install -f memcache
+    - echo "extension = memcache.so" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
     - echo "date.timezone = Europe/London" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
 
   override:

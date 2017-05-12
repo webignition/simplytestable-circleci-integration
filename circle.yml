@@ -21,8 +21,7 @@ dependencies:
     # Create bundle config
     - cp worker.simplytestable.com/app/config/security_credentials.yml.dist worker.simplytestable.com/app/config/security_credentials.yml
     - cat config/worker.simplytestable.com/bundle_parameters.yml config/worker.simplytestable.com/bundle_parameters.hydrogen > worker.simplytestable.com/src/SimplyTestable/WorkerBundle/Resources/config/parameters.yml
-    # Install
-    - rm -rf app/cache/*
+    # Install worker 1
     - composer install:
         pwd: worker.simplytestable.com
 

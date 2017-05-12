@@ -26,7 +26,7 @@ dependencies:
         pwd: worker.simplytestable.com
 
   database:
-    pre:
+    override:
       - php app/console --env=prod doctrine:database:create:
           pwd: worker.simplytestable.com
       - php app/console --env=prod doctrine:migrations:migrate --no-interaction:

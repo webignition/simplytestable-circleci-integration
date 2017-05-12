@@ -5,6 +5,9 @@ machine:
 dependencies:
   override:
     - git clone git@github.com:webignition/worker.simplytestable.com.git
+    - composer install:
+        pwd: worker.simplytestable.com
+    - ls -la
 
 test:
   override:

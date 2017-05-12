@@ -6,6 +6,9 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
 
+  pre:
+    - echo "date.timezone = Europe/London" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
+
   override:
     # Check out worker repo
     - git clone git@github.com:webignition/worker.simplytestable.com.git

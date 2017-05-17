@@ -3,6 +3,8 @@ machine:
     version: 5.5.36
   environment:
     SYMFONY_ENV: prod
+  post:
+    - sudo a2dismod php5
 
 dependencies:
   cache_directories:

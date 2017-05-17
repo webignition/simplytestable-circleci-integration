@@ -14,6 +14,11 @@ dependencies:
     - echo "extension = memcache.so" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
     - echo "date.timezone = Europe/London" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
 
+  post:
+    - sh ./build/html_validator_start_service.sh:
+          background: true
+
+
   override:
     - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql
     - sh ./build/worker_install.sh hydrogen

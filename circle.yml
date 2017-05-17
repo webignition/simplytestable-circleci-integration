@@ -3,15 +3,22 @@ machine:
     version: 5.5.36
   environment:
     SYMFONY_ENV: prod
+  post:
+    - sudo a2dismod php5
 
 dependencies:
   cache_directories:
     - ~/.composer/cache
 
   pre:
+    - sh ./build/html_validator_install.sh
     - printf "\n" | pecl install -f memcache
     - echo "extension = memcache.so" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
     - echo "date.timezone = Europe/London" >> /opt/circleci/php/$(phpenv global)/etc/php.ini
+
+  post:
+    - sh ./build/html_validator_start_service.sh:
+          background: true
 
   override:
     - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql

@@ -18,7 +18,6 @@ dependencies:
     - sh ./build/html_validator_start_service.sh:
           background: true
 
-
   override:
     - mysql -u ubuntu < config/worker.simplytestable.com/create_user.sql
     - sh ./build/worker_install.sh hydrogen
